@@ -1,5 +1,6 @@
 import React, {useContext, useEffect, useState} from 'react'
 import {auth} from "../firebase";
+import Firebase from '../firebase';
 
 const AuthContext = React.createContext()
 
@@ -36,6 +37,17 @@ export function AuthProvider({children}) {
         return currentUser.updatePassword(password)
     }
 
+    function addPet(name, sex, age, email) {
+        let pet = {name, sex, age, email}
+        Firebase.database("https://puddle-pet-default-rtdb.europe-west1.firebasedatabase.app").ref('pets').child('pet').push(pet, (err) => {
+            if(err) {
+                console.log(err)
+            } else {
+                console.log(err)
+            }
+        })
+    }
+
     useEffect(() => {
         const unsubscribe = auth.onAuthStateChanged(user => {
             setCurrentUser(user)
@@ -53,7 +65,8 @@ export function AuthProvider({children}) {
         logout,
         resetPassword,
         updateEmail,
-        updatePassword
+        updatePassword,
+        addPet
     }
     return (
         <AuthContext.Provider value={value}>
