@@ -39,7 +39,7 @@ export function AuthProvider({children}) {
 
     function addPet(name, sex, age, email) {
         let pet = {name, sex, age, email}
-        Firebase.database("https://puddle-pet-default-rtdb.europe-west1.firebasedatabase.app").ref('pets').child('pet').push(pet, (err) => {
+        Firebase.database("https://puddle-pet-default-rtdb.europe-west1.firebasedatabase.app").ref('pets').push(pet, (err) => {
             if(err) {
                 console.log(err)
             } else {

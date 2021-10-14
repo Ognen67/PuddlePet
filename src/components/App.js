@@ -9,6 +9,7 @@ import PrivateRoute from "./PrivateRoute";
 import ForgotPassword from "./ForgotPassword";
 import UpdateProfile from "./UpdateProfile";
 import AddPet from "./AddPet";
+import MyPets from "./MyPets";
 
 function App() {
     return (
@@ -25,6 +26,7 @@ function App() {
                             <Route path="/login" component={Login}/>
                             <Route path="/forgot-password" component={ForgotPassword}/>
                             <PrivateRoute path="/add-pet" component={AddPet}/>
+                            <PrivateRoute exact path="/my-pets" component={MyPets}/>
                         </Switch>
                     </AuthProvider>
                 </Router>
